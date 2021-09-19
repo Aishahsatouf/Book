@@ -1,0 +1,20 @@
+.random-group{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 1%;
+    padding: 2% 0;
+}
+
+.random-group .random-item:nth-child(odd){
+    bottom: 28px;
+    position: relative;
+}
+
+.random-group .random-item .item-picture{
+    margin: 0px;
+    max-height: 150px;
+    height: auto;
+    width: auto;
+    overflow: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.945)rgba(63, 61, 61, 0.6));
+}

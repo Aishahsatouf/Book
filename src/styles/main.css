@@ -1,0 +1,61 @@
+.banner {
+    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(100, 98, 98, 0.6)), url("../images/book.jpg");
+}
+.banner-text {
+    height: 110vh;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+.banner-text h2,
+.banner-text h4 {
+    color: #fff;
+    text-align: center;
+}
+.banner-text h4 {
+margin-top: 10px;
+}
+.banner-btn {
+    text-align: center;
+    margin-top: 30px;
+}
+.banner-btn a {
+    padding: 10px 30px;
+    color: #fff;
+    border: 2px solid #fff;
+    background-color: transparent;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.banner-btn a:hover, .banner-btn a:focus{
+    color: rgba(0,0,0,0.6);
+    background-color: #fff;
+}
+
+*{
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #5d5c61;
+}
+p{
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.secondary-color{
+    background-color: #f9f9f9;
+}
