@@ -1,3 +1,12 @@
+#flex-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color: rgb(245, 245, 245);
+}
+
 .Card1 {
     position: relative;
     background: #fff;
@@ -6,20 +15,18 @@
     flex-direction: column;
     text-align: left;
     overflow: hidden;
-    width: 30%;
+    width: 27%;
     font-size: 14px;
     border-radius: 3px;
     height: 79vh;
-    max-width: 600px;
+    max-width: 695px;
     transition: 0.5s;
     box-shadow: 0 3px 7px -3px rgb(0 0 0 / 30%);}
   
     .Card1 .photo {
         position: relative;
         transition: 0.5s;
-        /* float: left; */
         height: 42vh;
-        /* width: 40%; */
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -68,13 +75,23 @@
   .Card1 .description h1 {
     font-size: 2em;
     font-weight: bold;
+    margin-top:2%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
   }
-  .Card1 .description .line {display: block;
+  .Card1 .description .line { display: block;
     height: 5em;}
-  .Card1 .description .title {margin: 10px;}
+  .Card1 .description .title {
+    margin: 10px; 
+    display: block;
+    width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;}
   .Card1 .description .author {
-    color: #eecd16;
-    margin: 10px;}
+    color: #522812;
+    ;}
   .Card1 .description h2 {
     color: #9b9b9b;
     font-weight: lighter;
@@ -83,11 +100,14 @@
     margin: 10px;
     font-weight: 400;
   }
-  .Card1 .description p {position: relative;padding: 16px; overflow-y: scroll;height: 16vh;}
+  .Card1 .description p {position: relative;padding: 16px; height: 16vh;text-overflow: ellipsis;
+    overflow: hidden;
+     padding-top: 5%; 
+  }
   
   .Card1 .description p:after {
     content: "";
-    background: #eecd16;
+    background: #522812;
     height: 6px;
     width: 5em;
     position: absolute;
@@ -95,7 +115,7 @@
     left: 10px;
   }
   .Card1 .description a {
-    color: #eecd16;
+    color: #522812;
     margin-bottom: 1em;
     position: absolute;
     right:1em;

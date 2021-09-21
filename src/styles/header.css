@@ -2,7 +2,7 @@
     background:transparent;
 }
 .afterScroll nav {
-    background-color: #fff;
+    background-color: rgb(245, 245, 245);
     box-shadow: 3px 0 7px 0 rgb(0 0 0 / 61%);
     transition: 1s;
 }
@@ -22,10 +22,10 @@ header nav {
     color: #fff !important;
 }
 .afterScroll .nav-link {
-    color: #eecd16!important;
+    color: #61361f!important;
 }
 .btn-outline{
-    outline-color: #eecd16 !important;
+    outline-color: #61361f !important;
 }
 
   

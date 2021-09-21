@@ -19,7 +19,7 @@ function Header() {
             
           }
         } else {
-          if (headerState === 'afterScroll') {
+          if  (headerState=== 'afterScroll') {
             setHeaderState('beforeScroll'); 
           }
         }
@@ -74,15 +74,6 @@ function Header() {
               
             </Nav>
           </Navbar.Collapse>
-          {/* <Form className="d-flex">
-      <FormControl
-        type="search"
-        placeholder="Search"
-        className="mr-2"
-        aria-label="Search"
-      />
-      <Button variant="outline-warning">Search</Button>
-    </Form> */}
     <Form/>
         </Container>
       </Navbar>

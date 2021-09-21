@@ -1,6 +1,25 @@
-.search-text {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    flex-direction: column;
+@import url('https://fonts.googleapis.com/css2?family=Grechen+Fuemen&display=swap');
+#search{
+  padding: 80px 0;
+  background-color:rgba(245, 245, 245, 0.849)
 }
+#header{
+    font-family: 'Grechen Fuemen', cursive;
+}
+  #header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero-footer {
+    display: flex;
+  }
+  #logo { font-size: 5vh;margin-bottom:0px; }
+.hero-title { font-size: 9vh; color: #61361f; margin-top: 0px; }
+.button { font-size: 3vh; }

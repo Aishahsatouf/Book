@@ -27,7 +27,7 @@ class Random extends React.Component {
                {this.state.books.length>0 && this.state.books.map((item)=>{
               return(
                 <div className="random-item">
-                    <a href={item.selfLink?item.selfLink:"https://www.googleapis.com/books/v1/volumes/Ee0bEAAAQBAJ"}>
+                    <a href={item.volumeInfo.previewLink?item.volumeInfo.previewLink:"https://www.googleapis.com/books/v1/volumes/Ee0bEAAAQBAJ"}>
                         <figure className="item-picture">
                             <img src={(item.volumeInfo.imageLinks) ? item.volumeInfo.imageLinks.thumbnail : `https://i.imgur.com/J5LVHEL.jpg`}/>
                         </figure>

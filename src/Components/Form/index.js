@@ -25,7 +25,7 @@ export default function Search(){
           name="feild"
           onChange={handleChange}
         />
-        <Button type="submit" variant="outline-warning"><Link style={{color:"white",textDecoration:"none"}} to={`/books/${searchFeild}`}>Search</Link></Button>
+        <Button type="submit" style={{backgroundColor:"#61361f",outlineColor:"#61361f", borderColor:"#61361f"}}><Link style={{color:"white",textDecoration:"none"}} to={`/books/${searchFeild}`}>Search</Link></Button>
       </Form>
     )
 }

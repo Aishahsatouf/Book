@@ -1,74 +1,97 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
 import React from "react";
+import CardItem from './cardItems';
 import '../../styles/cards.css'
-// import {Card,Button} from 'react-bootstrap'
+import { Row, Col, Nav, Form } from 'react-bootstrap'
 // import {useParams} from 'react-router-dom'
-class Cards extends React.Component{
-constructor(props){
-    super(props);
-    this.state={
-        books:[]
+class Cards extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            books: []
+        }
     }
-}
-async componentDidMount (){
-    try{
-     let res=await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.props.match.params.id}&maxResults=20`);
-     console.log(res);
-     this.setState({
-        books:res.data.items
-     })
-    }catch(err){
-        console.log(err);
+    async componentDidMount () {
+        try {
+            let res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.props.match.params.id}&maxResults=20`);
+            this.cleanData(res)
+        } catch (err) {
+            console.log(err);
+        }
     }
-}
-render(){
-    return(
-        
-          // eslint-disable-next-line no-unused-vars
-<>
-            <div
-            style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-around",
-                flexWrap:"wrap",
-                width:"100%"
-            }}
-        >
-          {this.state.books.length>0 && this.state.books.map((item)=>{
-              return(
-                  // eslint-disable-next-line react/jsx-key
-            <div className="Card1">
-                <div className="photo"
-                    style={{
-                        backgroundImage: `url(${(item.volumeInfo.imageLinks) ? item.volumeInfo.imageLinks.thumbnail : `https://i.imgur.com/J5LVHEL.jpg`})`,
+    handleSort =(e)=>{
+        if(e.target.value&&e.target.value==="title"){
+            console.log(this.state.books)
+            let sortedBooks = this.state.books.sort((a,b)=>{
+                if(a.volumeInfo.title> b.volumeInfo.title) return 1;
+                if(a.volumeInfo.title < b.volumeInfo.title) return -1;
+                return 0;
+            })
+            this.setState({
+                books: sortedBooks
+            })
+        }
+        if(e.target.value&&e.target.value==="author"){
+            let sortedBooks = this.state.books.sort((a,b)=>{
+                if(a.volumeInfo.authors[0]> b.volumeInfo.authors[0]) return 1;
+                if(a.volumeInfo.authors[0] < b.volumeInfo.authors[0]) return -1;
+                return 0;
+            })
+            this.setState({
+                books: sortedBooks
+            })
+        }
+    }
+    cleanData (obj){
+        const cleaned= obj.data.items.map(item=>{
+            // eslint-disable-next-line no-prototype-builtins
+            if(item.volumeInfo.hasOwnProperty('title')===false){
+                item.volumeInfo.title="Unknown"
+            // eslint-disable-next-line no-prototype-builtins
+            }else if(item.volumeInfo.hasOwnProperty('authors')===false){
+                item.volumeInfo.authors[0]='Unkown'
+            }
+            return item;
+        })
+        this.setState({
+            books: cleaned
+        })
+    }
+    render() {
+        return (
+            // eslint-disable-next-line no-unused-vars
+            <>
+                <Row>
+                    <Col>
+                        <Nav className="justify-content-center" style={{ backgroundColor: "#fff5d9" }}>
+                            <Nav.Item >
+                                <h1 className="text-center mt-4 mb-4" style={{ color: "#522812" }}>Books</h1>
+                            </Nav.Item>
+                            <Nav.Item  style={{paddingTop:"2%", marginLeft:"1%"}}>
+                                <Form.Select   size="sm" onChange={this.handleSort}>
+                                    <option  value="" >Sort By...</option>
+                                    <option value="title">Title</option>
+                                    <option value="author">Author</option>
+                                </Form.Select>
+                            </Nav.Item>
+                        </Nav>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <div
+                        id="flex-container"
+                        >
+                            <CardItem books={this.state.books} />
+                        </div>
+                    </Col>
+                </Row>
+            </>
 
-                    }}
-                ></div>
-                <ul className="details">
-                    <h4>{item.volumeInfo.title}</h4>
-                    <li>Release Date: {item.volumeInfo.publishedDate}</li>
-                    <li>Publisher: {item.volumeInfo.publisher}</li>
-                </ul>
-                <div className="description">
-                    <div className="line">
-                        <h1 className="title">{item.volumeInfo.title}</h1>
-                        <h1 className="author">{ (item.volumeInfo.authors) ? item.volumeInfo.authors[0] : `Not available`}</h1>
-                    </div>
-                    <p className="summary">
-                    {item.volumeInfo.description}
-                    </p>
-                </div>
-            </div>
+
         )
-    })}
-    </div>
-    </> 
-        
-    
-    )
-}
+    }
 
 }
 
