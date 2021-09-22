@@ -2,8 +2,6 @@
 
 import React from "react";
 import '../../styles/cards.css'
-// import {Card,Button} from 'react-bootstrap'
-// import {useParams} from 'react-router-dom'
 class CardItem extends React.Component {
     constructor(props) {
         super(props);

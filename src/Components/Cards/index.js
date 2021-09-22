@@ -2,14 +2,17 @@
 import axios from "axios";
 import React from "react";
 import CardItem from './cardItems';
-import '../../styles/cards.css'
-import { Row, Col, Nav, Form } from 'react-bootstrap'
-// import {useParams} from 'react-router-dom'
+import '../../styles/cards.css';
+import errorPlaceHolder from "../../images/error.jpg";
+import { Row, Col, Nav, Form } from 'react-bootstrap';
+import {Link }from 'react-router-dom'
+
 class Cards extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            books: []
+            books: [],
+            error:false,
         }
     }
     async componentDidMount () {
@@ -34,7 +37,9 @@ class Cards extends React.Component {
                 })
             }
         } catch (err) {
-            console.log(err);
+            this.setState({
+                error:true
+            })
         }
     }
     handleSort =(e)=>{
@@ -60,53 +65,55 @@ class Cards extends React.Component {
             })
         }
     }
-    // cleanData (obj){
-    //     const cleaned= obj.data.items.map(item=>{
-    //         // eslint-disable-next-line no-prototype-builtins
-    //         if(item.volumeInfo.hasOwnProperty('title')===false){
-    //             item.volumeInfo.title="Unknown"
-    //         // eslint-disable-next-line no-prototype-builtins
-    //         }else if(item.volumeInfo.hasOwnProperty('authors')===false){
-    //             item.volumeInfo.authors[0]='Unkown'
-    //         }
-    //         return item;
-    //     });
-    //     console.log(cleaned);
-    //     this.setState({
-    //         books: cleaned
-    //     })
-    // }
-    render() {
-        return (
+    render=()=> {
+       return(
             // eslint-disable-next-line no-unused-vars
-            <>
-                <Row>
-                    <Col>
-                        <Nav className="justify-content-center" style={{ backgroundColor: "#fff5d9" }}>
-                            <Nav.Item >
-                                <h1 className="text-center mt-4 mb-4" style={{ color: "#522812" }}>Books</h1>
-                            </Nav.Item>
-                            <Nav.Item  style={{paddingTop:"2%", marginLeft:"1%"}}>
-                                <Form.Select   size="sm" onChange={this.handleSort}>
-                                    <option  value="" >Sort By...</option>
-                                    <option value="title">Title</option>
-                                    <option value="author">Author</option>
-                                </Form.Select>
-                            </Nav.Item>
-                        </Nav>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <div
-                        id="flex-container"
-                        >
-                            <CardItem books={this.state.books} />
-                        </div>
-                    </Col>
-                </Row>
+            
+                    <>
+                    <Row>
+                        <Col>
+                            <Nav className="justify-content-center" style={{ backgroundColor: "#fff5d9" }}>
+                                <Nav.Item >
+                                    <h1 className="text-center mt-4 mb-4" style={{ color: "#522812" }}>Books</h1>
+                                </Nav.Item>
+                                <Nav.Item  style={{paddingTop:"2%", marginLeft:"1%"}}>
+                                    <Form.Select   size="sm" onChange={this.handleSort}>
+                                        <option  value="" >Sort By...</option>
+                                        <option value="title">Title</option>
+                                        <option value="author">Author</option>
+                                    </Form.Select>
+                                </Nav.Item>
+                            </Nav>
+                        </Col>
+                    </Row>
+                    {
+                !this.state.error ?(
+                    <Row>
+                        <Col>
+                            <div
+                            id="flex-container"
+                            >
+                                <CardItem books={this.state.books} />
+                            </div>
+                        </Col>
+                    </Row>
+    
+               ):(
+                 <>
+                   <Row>
+                   <Col >
+                <h1>There is an error</h1>
+                <Link to="/"> Go back to the home page </Link>
+                   </Col> 
+                   <Col >
+                   <img src={errorPlaceHolder}/>
+                   </Col> 
+                   </Row>
+                 </>
+                )
+            }
             </>
-
+            
 
         )
     }

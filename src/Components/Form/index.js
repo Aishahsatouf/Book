@@ -5,15 +5,7 @@ export default function Search(){
   const [searchFeild,setSearch]=useState('')
   
     const handleChange=(e)=>{
-       setSearch(e.target.value);
-      //  console.log(e.target.value);
-        // if(searchFeild){
-        //      console.log(searchFeild);
-        //      return (
-        //        
-        //      )
-        // }
-       
+       setSearch(e.target.value);  
     }
     return (
         <Form className="d-flex">
@@ -24,8 +16,9 @@ export default function Search(){
           aria-label="Search"
           name="feild"
           onChange={handleChange}
+          id="input-feild"
         />
-        <Button type="submit" style={{backgroundColor:"#61361f",outlineColor:"#61361f", borderColor:"#61361f"}}><Link style={{color:"white",textDecoration:"none"}} to={`/books/${searchFeild}`}>Search</Link></Button>
+        <Link style={{color:"white",textDecoration:"none"}} to={`/books/${searchFeild}`}><Button type="submit" style={{backgroundColor:"rgb(144 62 18)",outlineColor:"rgb(144 62 18)", borderColor:"rgb(144 62 18)"}}>Search</Button></Link>
       </Form>
     )
 }
