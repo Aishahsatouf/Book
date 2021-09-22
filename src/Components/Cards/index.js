@@ -4,7 +4,7 @@ import React from "react";
 import CardItem from './cardItems';
 import '../../styles/cards.css';
 import errorPlaceHolder from "../../images/error.jpg";
-import { Row, Col, Nav, Form } from 'react-bootstrap';
+import { Row, Col, Nav, Form ,Button} from 'react-bootstrap';
 import {Link }from 'react-router-dom'
 
 class Cards extends React.Component {
@@ -82,6 +82,9 @@ class Cards extends React.Component {
                                         <option value="title">Title</option>
                                         <option value="author">Author</option>
                                     </Form.Select>
+                                </Nav.Item>
+                                <Nav.Item  style={{paddingTop:"2%", marginLeft:"1%"}}>
+                                <Link style={{color:"white",textDecoration:"none"}} to={`/`}><Button type="submit" style={{backgroundColor:"rgb(144 62 18)",outlineColor:"rgb(144 62 18)", borderColor:"rgb(144 62 18)"}}>Search Again</Button></Link>
                                 </Nav.Item>
                             </Nav>
                         </Col>
