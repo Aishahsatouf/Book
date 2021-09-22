@@ -15,7 +15,24 @@ class Cards extends React.Component {
     async componentDidMount () {
         try {
             let res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.props.match.params.id}&maxResults=20`);
-            this.cleanData(res)
+            console.log(res.status)
+            if(res.status==200){
+
+                let cleaned= res.data.items.map(item=>{
+                    // eslint-disable-next-line no-prototype-builtins
+                    if(!item.volumeInfo['title']){
+                        item.volumeInfo.title="Unknown"
+                    // eslint-disable-next-line no-prototype-builtins
+                    }else if(!item.volumeInfo['authors']){
+                        item.volumeInfo.authors=[]
+                        item.volumeInfo.authors[0]='Unkown'
+                    }
+                    return item;
+                });
+                this.setState({
+                    books: cleaned
+                })
+            }
         } catch (err) {
             console.log(err);
         }
@@ -26,7 +43,7 @@ class Cards extends React.Component {
             let sortedBooks = this.state.books.sort((a,b)=>{
                 if(a.volumeInfo.title> b.volumeInfo.title) return 1;
                 if(a.volumeInfo.title < b.volumeInfo.title) return -1;
-                return 0;
+                return 0
             })
             this.setState({
                 books: sortedBooks
@@ -36,28 +53,29 @@ class Cards extends React.Component {
             let sortedBooks = this.state.books.sort((a,b)=>{
                 if(a.volumeInfo.authors[0]> b.volumeInfo.authors[0]) return 1;
                 if(a.volumeInfo.authors[0] < b.volumeInfo.authors[0]) return -1;
-                return 0;
+                return 0
             })
             this.setState({
                 books: sortedBooks
             })
         }
     }
-    cleanData (obj){
-        const cleaned= obj.data.items.map(item=>{
-            // eslint-disable-next-line no-prototype-builtins
-            if(item.volumeInfo.hasOwnProperty('title')===false){
-                item.volumeInfo.title="Unknown"
-            // eslint-disable-next-line no-prototype-builtins
-            }else if(item.volumeInfo.hasOwnProperty('authors')===false){
-                item.volumeInfo.authors[0]='Unkown'
-            }
-            return item;
-        })
-        this.setState({
-            books: cleaned
-        })
-    }
+    // cleanData (obj){
+    //     const cleaned= obj.data.items.map(item=>{
+    //         // eslint-disable-next-line no-prototype-builtins
+    //         if(item.volumeInfo.hasOwnProperty('title')===false){
+    //             item.volumeInfo.title="Unknown"
+    //         // eslint-disable-next-line no-prototype-builtins
+    //         }else if(item.volumeInfo.hasOwnProperty('authors')===false){
+    //             item.volumeInfo.authors[0]='Unkown'
+    //         }
+    //         return item;
+    //     });
+    //     console.log(cleaned);
+    //     this.setState({
+    //         books: cleaned
+    //     })
+    // }
     render() {
         return (
             // eslint-disable-next-line no-unused-vars

@@ -62,16 +62,7 @@ function Header() {
                 className="nav-link"
               >
                 BEST SELLING
-              </HashLink>
-              <HashLink
-                scroll={(el) => scrollWithOffset(el)}
-                smooth
-                to="#pricing"
-                className="nav-link"
-              >
-                PRICING
-              </HashLink>
-              
+              </HashLink> 
             </Nav>
           </Navbar.Collapse>
     <Form/>

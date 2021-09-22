@@ -1,0 +1,48 @@
+.cards-container {
+    display: flex;
+    color: #522812;
+    padding: 1rem;
+    overflow-x: auto;
+    position: relative;
+    height: 80vh;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+  .cards {
+    flex: 1 0 250px;
+    background: #fff5d9;
+    margin: 1rem;
+    overflow: hidden;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+    
+    img {
+      width: 250px;
+      height: 250px;
+      object-fit: center;
+    }
+    
+    &:hover {
+      box-shadow: 0 4px 1rem -4px #4d362a;
+      transform: translateY(-3px);
+    }
+  }
+
+  
+  @media screen and (max-width: 625px) {
+    .container {
+      width: 100%
+    }
+    
+    .cards-container {
+      padding: .5rem;
+    }
+    
+    .card {
+      margin: .5rem;
+    }
+  }

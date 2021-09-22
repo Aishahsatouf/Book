@@ -32,6 +32,15 @@ function Footer() {
                     <div className="footer-menu">
                       <h3>Shortcuts</h3>
                       <ul>
+                      <li>
+                          <HashLink
+                            scroll={(el) => scrollWithOffset(el)}
+                            smooth
+                            to="#banner"
+                          >
+                            MAIN
+                          </HashLink>
+                        </li>
                         <li>
                           <HashLink
                             scroll={(el) => scrollWithOffset(el)}
@@ -52,13 +61,6 @@ function Footer() {
                         </li>
 
                         <li>
-                          <HashLink
-                            scroll={(el) => scrollWithOffset(el)}
-                            smooth
-                            to="#pricing"
-                          >
-                             PRICING
-                          </HashLink>
                         </li>
                         
                       </ul>

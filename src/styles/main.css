@@ -1,6 +1,6 @@
 .banner {
     background-size: cover;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(100, 98, 98, 0.6)), url("../images/book.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(100, 98, 98, 0.6)), url("../images/books.jpg");
 }
 .banner-text {
     height: 110vh;
