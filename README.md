@@ -37,7 +37,7 @@ First, clone the repository (you'll need to fork first and then clone your fork 
 4. Open `localhost:3000`
 
 ## Preview
-[Deployed](https://614a9417963c3111f4284c20--reverent-beaver-7e95ec.netlify.app/)
+[Deployed](https://booksswift.netlify.app/)
 
 ### Help
 
